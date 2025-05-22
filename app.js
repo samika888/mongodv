@@ -3,11 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose= require('mongoose');
 var bookRouter = require("./routes/book");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+mongoose.connect("mongodb+srv://samikakhadka63:tPQiOqudOkSeNMNH@cluster0.tpbbxdp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+.then(()=> console.log("connected")) //if connected then show connected in console
+.catch((err)=> console.error("error conneting",err)) //if error then show errror connecting and show the error
+
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
